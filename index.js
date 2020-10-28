@@ -8,5 +8,6 @@ import App from './app/Entrypoint';
 import { name as appName } from './app.json';
 import { enableScreens } from 'react-native-screens';
 enableScreens();
+console.disableYellowBox = true;
 
 AppRegistry.registerComponent(appName, () => App);

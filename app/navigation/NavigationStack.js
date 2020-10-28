@@ -5,12 +5,17 @@ import { useSelector } from 'react-redux';
 
 import { navigationRef } from './NavigationService';
 
-import Login from 'app/features/login/containers';
-import Home from 'app/features/home/containers';
+import Login from '../features/login/containers';
+import Home from '../features/home/containers';
+import Timer from '../features/timer/containers';
+import ExerciseMeditating from '../features/exerciseMeditating/containers';
+import AppStyles from '../config/styles';
+import Volume from '../features/volumeAdjust/containers';
+import MeditateLast from '../features/meditateLast/containers';
 
 const Stack = createStackNavigator();
 
-const homeOptions = {
+const screenOptions = {
   title: 'My home',
   headerStyle: {
     backgroundColor: '#f4511e',
@@ -28,18 +33,24 @@ function App() {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         {isLoggedIn ? (
-          <Stack.Screen name="Home" component={Home} options={homeOptions} />
+          <>
+            <Stack.Screen name="Timer" component={Timer} options={{...screenOptions, title: 'Timer'}} />
+            <Stack.Screen name="ExerciseMeditating" component={ExerciseMeditating} options={{...screenOptions, title: 'Exercise Meditating'}} />
+            <Stack.Screen name="Volume" component={Volume} options={{...screenOptions, title: 'Volume'}} />
+            <Stack.Screen name="MeditateLast" component={MeditateLast} options={{...screenOptions, title: 'Meditate Last'}} />
+          </>
         ) : (
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{
-              // When logging out, a pop animation feels intuitive
-              // You can remove this if you want the default 'push' animation
-              animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-            }}
-          />
-        )}
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{
+                // When logging out, a pop animation feels intuitive
+                // You can remove this if you want the default 'push' animation
+                animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+                headerStyle: { backgroundColor: AppStyles.color.COLOR_THEME_BACKGROUND }
+              }}
+            />
+          )}
       </Stack.Navigator>
     </NavigationContainer>
   );

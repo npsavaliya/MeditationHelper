@@ -1,8 +1,8 @@
 /* App config for apis
  */
 const ApiConstants = {
-  BASE_URL: 'http://wolverine-dev.com/',
-  LOGIN: 'api/Users/login',
+  BASE_URL: 'https://fakerestapi.azurewebsites.net/',
+  LOGIN: 'api/Users',
 };
 
 export default ApiConstants;
