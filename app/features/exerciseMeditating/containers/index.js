@@ -34,8 +34,7 @@ export default function ExerciseMeditating({ navigation }) {
                 }
             });
             Sound.setCategory('Playback');
-            // setTime({min: getTimeInMin, sec: 0})
-            setTime({min: 0, sec: 10})
+            setTime({min: getTimeInMin, sec: 0})
             whoosh = new Sound(s.sound, null, (error) => {
                 if (error) {
                   console.log('failed to load the sound', error);
